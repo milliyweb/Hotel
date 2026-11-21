@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nura</title>
+  <meta name="description" content="Nura — qulay xonalar, basseyn, spa va restoran. Onlayn bron qiling." />
+  <meta name="theme-color" content="#0a0f1e" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Nura" />
+  <meta property="og:locale" content="uz_UZ" />
+  <meta property="og:title" content="Nura — Mehmonxona" />
+  <meta property="og:description" content="Qulay xonalar va onlayn bron qilish." />
+  <meta property="og:url" content="https://delevoper-uz.github.io/Hotel/" />
+  <meta property="og:image" content="https://delevoper-uz.github.io/Hotel/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Nura — Mehmonxona" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nura — Mehmonxona" />
+  <meta name="twitter:description" content="Qulay xonalar va onlayn bron qilish." />
+  <meta name="twitter:image" content="https://delevoper-uz.github.io/Hotel/og-image.png" />
+  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="imgs/icon.png">
+</head>
+<body>
+  <div class="aurora-layer" aria-hidden="true">
+    <div class="aurora-blob blob-purple"></div>
+    <div class="aurora-blob blob-pink"></div>
+    <div class="aurora-blob blob-cyan"></div>
+  </div>
+
+  <div id="loader" class="loader">
+    <div class="loader-ring">
+      <i class="fa-solid fa-bell-concierge"></i>
+    </div>
+    <div class="loader-brand">Nura</div>
+    <div class="loader-bar">
+      <div id="barFill"></div>
+    </div>
+    <div class="loader-text">
+      <i class="fa-solid fa-spinner fa-spin"></i>
+      <span>Yuklanmoqda...</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-pill">
+      <a href="#" class="logo">
+        <i class="fa-solid fa-hotel"></i>
+        <span>Nura</span>
+      </a>
+      <nav id="nav" class="main-nav">
+        <a href="#rooms" onclick="toggleMenu('nav')">Xonalar</a>
+        <a href="#facilities" onclick="toggleMenu('nav')">Qulayliklar</a>
+        <a href="#prices" onclick="toggleMenu('nav')">Narxlar</a>
+        <a href="#booking" onclick="toggleMenu('nav')">Bron qilish</a>
+        <a href="#contact" onclick="toggleMenu('nav')">Aloqa</a>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="cart-btn" onclick="toggleMenu('cart')" aria-label="Tanlangan xonalar">
+          <i class="fa-solid fa-bell-concierge"></i>
+          <span id="roomCount">0</span>
+        </button>
+        <button type="button" class="burger-btn" onclick="toggleMenu('nav')" aria-label="Menyu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <span class="pill-tag">Sizni kutamiz</span>
+            <h1 class="hero-title">
+              Osoyishta <span class="grad-word">nafis</span> <span class="outline-text">maskan</span>
+            </h1>
+            <p class="hero-desc">
+              Milliy mehmondo'stlik va zamonaviy qulaylik uyg'unlashgan shinam xonalarda unutilmas hordiq chiqaring.
+            </p>
+            <div class="hero-btns">
+              <a href="#rooms" class="btn btn-primary">Xonalarni ko'rish</a>
+              <a href="#booking" class="btn btn-secondary">Bron qilish</a>
+            </div>
+            <div class="hero-stats">
+              <div class="hero-stat-item">
+                <i class="fa-solid fa-bed"></i>
+                <span>6 xil xona</span>
+              </div>
+              <div class="hero-stat-item">
+                <i class="fa-solid fa-mug-hot"></i>
+                <span>Bepul nonushta</span>
+              </div>
+              <div class="hero-stat-item">
+                <i class="fa-solid fa-bell-concierge"></i>
+                <span>24/7 qabulxona</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-media">
+            <div class="arch-frame hero-arch">
+              <img src="imgs/mehmonxona-hero.jpg" alt="rasm" />
+            </div>
+          </div>
+        </div>
+
+        <form action="#rooms" class="quick-search">
+          <div class="search-field">
+            <label for="inDate"><i class="fa-solid fa-calendar-days"></i> Kelish sanasi</label>
+            <input type="date" id="inDate" required onchange="document.getElementById('out').min=this.value" />
+          </div>
+          <div class="search-field">
+            <label for="out"><i class="fa-solid fa-calendar-days"></i> Ketish sanasi</label>
+            <input type="date" id="out" required />
+          </div>
+          <div class="search-field">
+            <label for="guests"><i class="fa-solid fa-users"></i> Mehmonlar soni</label>
+            <select id="guests">
+              <option value="1">1 mehmon</option>
+              <option value="2" selected>2 mehmon</option>
+              <option value="3">3 mehmon</option>
+              <option value="4">4 mehmon</option>
+              <option value="5+">5+ mehmon</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary search-submit">Bo'sh xonalarni ko'rish</button>
+        </form>
+      </div>
+    </section>
+
+    <div class="marquee-strip">
+      <div class="marquee-track">
+        <span>Xonalar · Basseyn · Spa · Restoran · Transfer · </span>
+        <span>Xonalar · Basseyn · Spa · Restoran · Transfer · </span>
+        <span>Xonalar · Basseyn · Spa · Restoran · Transfer · </span>
+        <span>Xonalar · Basseyn · Spa · Restoran · Transfer · </span>
+      </div>
+    </div>
+
+    <section id="rooms" class="section reveal">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill-tag">01 / Xonalar</span>
+          <h2 class="section-title">Shinam <span class="grad-word">xonalar</span> <span class="outline-text">to'plami</span></h2>
+          <p class="section-desc">Har bir xona tabiiy yorug'lik, mayin ranglar va to'liq dam olishingiz uchun zarur jihozlar bilan tayyorlangan.</p>
+        </div>
+
+        <div class="filter-bar">
+          <button type="button" class="filter-btn" onclick="filterRooms('all')">Hammasi</button>
+          <button type="button" class="filter-btn" onclick="filterRooms('standard')">Standart</button>
+          <button type="button" class="filter-btn" onclick="filterRooms('deluxe')">Deluxe</button>
+          <button type="button" class="filter-btn" onclick="filterRooms('family')">Oilaviy</button>
+          <button type="button" class="filter-btn" onclick="filterRooms('suite')">Lyuks</button>
+        </div>
+
+        <div class="rooms-grid">
+          <article class="room-card" data-type="standard">
+            <div class="room-img-wrap">
+              <div class="arch-frame room-arch">
+                <img src="imgs/xona01.jpg" alt="rasm" loading="lazy" />
+              </div>
+              <div class="key-tag">
+                <strong>450 000</strong>
+                <span>so'm / kecha</span>
+              </div>
+            </div>
+            <div class="room-body">
+              <span class="room-type">Standart</span>
+              <h3>Tonggi Shabada</h3>
+              <div class="room-chips">
+                <span><i class="fa-solid fa-ruler-combined"></i> 24 m²</span>
+                <span><i class="fa-solid fa-users"></i> 2 kishi</span>
+                <span><i class="fa-solid fa-bed"></i> Queen karavot</span>
+                <span><i class="fa-solid fa-mug-hot"></i> Nonushta bor</span>
+              </div>
+              <div class="room-actions">
+                <a href="#oyna-1" class="btn btn-secondary">Batafsil</a>
+                <button type="button" class="btn btn-primary" onclick="addRoom(this)" data-name="Tonggi Shabada">Band qilish</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="room-card" data-type="standard">
+            <div class="room-img-wrap">
+              <div class="arch-frame room-arch">
+                <img src="imgs/xona02.jpg" alt="rasm" loading="lazy" />
+              </div>
+              <div class="key-tag">
+                <strong>550 000</strong>
+                <span>so'm / kecha</span>
+              </div>
+            </div>
+            <div class="room-body">
+              <span class="room-type">Standart</span>
+              <h3>Sokin Bog'</h3>
+              <div class="room-chips">
+                <span><i class="fa-solid fa-ruler-combined"></i> 28 m²</span>
+                <span><i class="fa-solid fa-users"></i> 2 kishi</span>
+                <span><i class="fa-solid fa-bed"></i> 2 ta alohida</span>
+                <span><i class="fa-solid fa-mountain-sun"></i> Bog' manzarasi</span>
+              </div>
+              <div class="room-actions">
+                <a href="#oyna-2" class="btn btn-secondary">Batafsil</a>
+                <button type="button" class="btn btn-primary" onclick="addRoom(this)" data-name="Sokin Bog'">Band qilish</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="room-card" data-type="deluxe">
+            <div class="room-img-wrap">
+              <div class="arch-frame room-arch">
+                <img src="imgs/xona03.jpg" alt="rasm" loading="lazy" />
+              </div>
+              <div class="key-tag">
+                <strong>850 000</strong>
+                <span>so'm / kecha</span>
+              </div>
+            </div>
+            <div class="room-body">
+              <span class="room-type">Deluxe</span>
+              <h3>Feruza Nuri</h3>
+              <div class="room-chips">
+                <span><i class="fa-solid fa-ruler-combined"></i> 36 m²</span>
+                <span><i class="fa-solid fa-users"></i> 2 kishi</span>
+                <span><i class="fa-solid fa-bed"></i> King karavot</span>
+                <span><i class="fa-solid fa-mug-hot"></i> Nonushta bor</span>
+              </div>
+              <div class="room-actions">
+                <a href="#oyna-3" class="btn btn-secondary">Batafsil</a>
+                <button type="button" class="btn btn-primary" onclick="addRoom(this)" data-name="Feruza Nuri">Band qilish</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="room-card" data-type="deluxe">
+            <div class="room-img-wrap">
+              <div class="arch-frame room-arch">
+                <img src="imgs/xona04.jpg" alt="rasm" loading="lazy" />
+              </div>
+              <div class="key-tag">
+                <strong>1 100 000</strong>
+                <span>so'm / kecha</span>
+              </div>
+            </div>
+            <div class="room-body">
+              <span class="room-type">Deluxe</span>
+              <h3>Marjon Ufq</h3>
+              <div class="room-chips">
+                <span><i class="fa-solid fa-ruler-combined"></i> 42 m²</span>
+                <span><i class="fa-solid fa-users"></i> 3 kishi</span>
+                <span><i class="fa-solid fa-bed"></i> King karavot</span>
+                <span><i class="fa-solid fa-mountain-sun"></i> Keng balkon</span>
+              </div>
+              <div class="room-actions">
+                <a href="#oyna-4" class="btn btn-secondary">Batafsil</a>
+                <button type="button" class="btn btn-primary" onclick="addRoom(this)" data-name="Marjon Ufq">Band qilish</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="room-card" data-type="family">
+            <div class="room-img-wrap">
+              <div class="arch-frame room-arch">
+                <img src="imgs/xona05.jpg" alt="rasm" loading="lazy" />
+              </div>
+              <div class="key-tag">
+                <strong>1 650 000</strong>
+                <span>so'm / kecha</span>
+              </div>
+            </div>
+            <div class="room-body">
+              <span class="room-type">Oilaviy</span>
+              <h3>Zaytun Hovli</h3>
+              <div class="room-chips">
+                <span><i class="fa-solid fa-ruler-combined"></i> 58 m²</span>
+                <span><i class="fa-solid fa-users"></i> 4 kishi</span>
+                <span><i class="fa-solid fa-bed"></i> 2 xonali</span>
+                <span><i class="fa-solid fa-mug-hot"></i> Nonushta bor</span>
+              </div>
+              <div class="room-actions">
+                <a href="#oyna-5" class="btn btn-secondary">Batafsil</a>
+                <button type="button" class="btn btn-primary" onclick="addRoom(this)" data-name="Zaytun Hovli">Band qilish</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="room-card" data-type="suite">
+            <div class="room-img-wrap">
+              <div class="arch-frame room-arch">
+                <img src="imgs/xona06.jpg" alt="rasm" loading="lazy" />
+              </div>
+              <div class="key-tag">
+                <strong>3 200 000</strong>
+                <span>so'm / kecha</span>
+              </div>
+            </div>
+            <div class="room-body">
+              <span class="room-type">Lyuks</span>
+              <h3>Oltin Qasr</h3>
+              <div class="room-chips">
+                <span><i class="fa-solid fa-ruler-combined"></i> 85 m²</span>
+                <span><i class="fa-solid fa-users"></i> 4 kishi</span>
+                <span><i class="fa-solid fa-bed"></i> Super King</span>
+                <span><i class="fa-solid fa-mountain-sun"></i> Panorama</span>
+              </div>
+              <div class="room-actions">
+                <a href="#oyna-6" class="btn btn-secondary">Batafsil</a>
+                <button type="button" class="btn btn-primary" onclick="addRoom(this)" data-name="Oltin Qasr">Band qilish</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true">
+      <span></span>
+      <i class="fa-solid fa-spa"></i>
+      <span></span>
+    </div>
+
+    <section id="facilities" class="section reveal">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill-tag">02 / Qulayliklar</span>
+          <h2 class="section-title">Dam olish <span class="grad-word">uchun</span> <span class="outline-text">imkoniyatlar</span></h2>
+          <p class="section-desc">Mehmonxonamiz hududida tana va ruh osoyishtaligi uchun barcha sharoitlar yaratilgan.</p>
+        </div>
+
+        <div class="bento-grid">
+          <div class="bento-card bento-a">
+            <div class="bento-icon"><i class="fa-solid fa-person-swimming"></i></div>
+            <h3>Basseyn va spa</h3>
+            <p>Issiq suvli yopiq basseyn, fin saunasi va tajribali mutaxassislar tomonidan o'tkaziladigan sog'lomlashtiruvchi massaj xizmatlari sizning ixtiyoringizda.</p>
+            <div class="bento-chips">
+              <span><i class="fa-solid fa-person-swimming"></i> Yopiq basseyn</span>
+              <span><i class="fa-solid fa-spa"></i> Sauna</span>
+              <span><i class="fa-solid fa-spa"></i> Massaj</span>
+            </div>
+            <div class="bento-outline-stat">
+              <strong>24/7</strong>
+              <span>qabulxona va xizmat</span>
+            </div>
+          </div>
+
+          <div class="bento-card bento-b">
+            <div class="bento-icon"><i class="fa-solid fa-utensils"></i></div>
+            <h3>Restoran</h3>
+            <p>Milliy va yevropa taomlari, tonggi yangi pishiriqlar va tabiiy sharbatlar.</p>
+          </div>
+
+          <div class="bento-card bento-c">
+            <div class="bento-icon"><i class="fa-solid fa-dumbbell"></i></div>
+            <h3>Fitnes zal</h3>
+            <p>Zamonaviy trenajyorlar va keng mashg'ulot maydoni.</p>
+          </div>
+
+          <div class="bento-card bento-d">
+            <div class="bento-icon"><i class="fa-solid fa-people-roof"></i></div>
+            <h3>Konferens zal</h3>
+            <p>Ishbilarmonlik uchrashuvlari va taqdimotlar uchun jihozlangan zal.</p>
+          </div>
+
+          <div class="bento-card bento-e">
+            <div class="bento-icon"><i class="fa-solid fa-van-shuttle"></i></div>
+            <h3>Aeroport transferi</h3>
+            <p>Aeroport va vokzaldan qulay avtomobillarda kutib olish.</p>
+          </div>
+
+          <div class="bento-card bento-f">
+            <div class="bento-stat-box">
+              <strong>60+</strong>
+              <span>shinam xona</span>
+            </div>
+            <div class="bento-stat-box">
+              <strong>4.9 <i class="fa-solid fa-star"></i></strong>
+              <span>mehmonlar bahosi</span>
+            </div>
+            <div class="bento-stat-box">
+              <strong>24 soat</strong>
+              <span>qabulxona</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mini-amenities">
+          <div class="mini-item"><i class="fa-solid fa-wifi"></i><span>Bepul Wi-Fi</span></div>
+          <div class="mini-item"><i class="fa-solid fa-square-parking"></i><span>Bepul parkovka</span></div>
+          <div class="mini-item"><i class="fa-solid fa-snowflake"></i><span>Konditsioner</span></div>
+          <div class="mini-item"><i class="fa-solid fa-mug-hot"></i><span>Bepul nonushta</span></div>
+          <div class="mini-item"><i class="fa-solid fa-bell-concierge"></i><span>Kir yuvish</span></div>
+          <div class="mini-item"><i class="fa-solid fa-people-roof"></i><span>Bolalar maydoni</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true">
+      <span></span>
+      <i class="fa-solid fa-star"></i>
+      <span></span>
+    </div>
+
+    <section id="prices" class="section reveal">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill-tag">03 / Narxlar</span>
+          <h2 class="section-title">Shaffof <span class="grad-word">tariflar</span> <span class="outline-text">jadvali</span></h2>
+          <p class="section-desc">Barcha xona toifalari bo'yicha shartlar va bir kechalik narxlarni solishtiring.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="price-table">
+            <thead>
+              <tr>
+                <th>Xona nomi</th>
+                <th>Turi</th>
+                <th>Maydon</th>
+                <th>Sig'im</th>
+                <th>Karavot</th>
+                <th>Nonushta</th>
+                <th>Bekor qilish</th>
+                <th>Bir kecha narxi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Tonggi Shabada</strong></td>
+                <td>Standart</td>
+                <td>24 m²</td>
+                <td>2 kishi</td>
+                <td>Queen</td>
+                <td><i class="fa-solid fa-check check-yes"></i></td>
+                <td>Bepul</td>
+                <td><span class="price-badge">450 000 so'm</span></td>
+              </tr>
+              <tr>
+                <td><strong>Sokin Bog'</strong></td>
+                <td>Standart</td>
+                <td>28 m²</td>
+                <td>2 kishi</td>
+                <td>2 ta alohida</td>
+                <td><i class="fa-solid fa-check check-yes"></i></td>
+                <td>Bepul</td>
+                <td>550 000 so'm</td>
+              </tr>
+              <tr>
+                <td><strong>Feruza Nuri</strong></td>
+                <td>Deluxe</td>
+                <td>36 m²</td>
+                <td>2 kishi</td>
+                <td>King</td>
+                <td><i class="fa-solid fa-check check-yes"></i></td>
+                <td>Bepul</td>
+                <td>850 000 so'm</td>
+              </tr>
+              <tr>
+                <td><strong>Marjon Ufq</strong></td>
+                <td>Deluxe</td>
+                <td>42 m²</td>
+                <td>3 kishi</td>
+                <td>King</td>
+                <td><i class="fa-solid fa-check check-yes"></i></td>
+                <td>Shartli</td>
+                <td>1 100 000 so'm</td>
+              </tr>
+              <tr>
+                <td><strong>Zaytun Hovli</strong></td>
+                <td>Oilaviy</td>
+                <td>58 m²</td>
+                <td>4 kishi</td>
+                <td>2 xonali</td>
+                <td><i class="fa-solid fa-check check-yes"></i></td>
+                <td>Bepul</td>
+                <td>1 650 000 so'm</td>
+              </tr>
+              <tr>
+                <td><strong>Oltin Qasr</strong></td>
+                <td>Lyuks</td>
+                <td>85 m²</td>
+                <td>4 kishi</td>
+                <td>Super King</td>
+                <td><i class="fa-solid fa-check check-yes"></i></td>
+                <td>Shartli</td>
+                <td><span class="price-badge">3 200 000 so'm</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">Narxlar bir kecha uchun, soliqlar kiritilgan</p>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true">
+      <span></span>
+      <i class="fa-solid fa-spa"></i>
+      <span></span>
+    </div>
+
+    <section id="booking" class="section reveal">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill-tag">04 / Bron qilish</span>
+          <h2 class="section-title">Xonangizni <span class="grad-word">hoziroq</span> <span class="outline-text">band qiling</span></h2>
+          <p class="section-desc">Formani to'ldiring, administratorimiz qisqa vaqt ichida siz bilan bog'lanib bandlovni tasdiqlaydi.</p>
+        </div>
+
+        <div class="booking-grid">
+          <form class="booking-form" onsubmit="showMessage('Band qilish so\'rovi qabul qilindi', 'success'); this.reset(); return false;">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fullName">To'liq ism</label>
+                <input type="text" id="fullName" placeholder="Ism va familiyangiz" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefon raqam</label>
+                <input type="tel" id="phone" placeholder="+998 90 123 45 67" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Elektron pochta</label>
+                <input type="email" id="email" placeholder="ism@pochta.uz" required />
+              </div>
+              <div class="form-group">
+                <label for="roomType">Xona turi</label>
+                <select id="roomType">
+                  <option value="Standart">Standart</option>
+                  <option value="Deluxe">Deluxe</option>
+                  <option value="Oilaviy">Oilaviy</option>
+                  <option value="Lyuks">Lyuks</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row three-cols">
+              <div class="form-group">
+                <label for="checkIn">Kelish sanasi</label>
+                <input type="date" id="checkIn" required />
+              </div>
+              <div class="form-group">
+                <label for="checkOut">Ketish sanasi</label>
+                <input type="date" id="checkOut" required />
+              </div>
+              <div class="form-group">
+                <label for="guestCount">Mehmonlar soni</label>
+                <select id="guestCount">
+                  <option value="1">1 kishi</option>
+                  <option value="2" selected>2 kishi</option>
+                  <option value="3">3 kishi</option>
+                  <option value="4">4 kishi</option>
+                  <option value="5+">5+ kishi</option>
+                </select>
+              </div>
+            </div>
+
+            <label class="checkbox-row">
+              <input type="checkbox" checked />
+              <span>Ertalabki nonushta kiritilsin</span>
+            </label>
+
+            <div class="form-group">
+              <label for="notesText">Maxsus so'rovlar</label>
+              <textarea id="notesText" rows="3" placeholder="Qo'shimcha istak yoki izohlaringizni yozing..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full">Bron qilish</button>
+          </form>
+
+          <aside class="rules-card">
+            <h3>Bron shartlari</h3>
+            <p class="rules-lead">Mehmonxonamizda qulay va tartibli dam olishingiz uchun asosiy qoidalar:</p>
+            <ul class="rules-list">
+              <li>
+                <i class="fa-solid fa-clock"></i>
+                <div>
+                  <strong>Kelish vaqti: 14:00</strong>
+                  <span>Erta kelish imkoniyati oldindan kelishilgan holda taqdim etiladi.</span>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-clock"></i>
+                <div>
+                  <strong>Ketish vaqti: 12:00</strong>
+                  <span>Kechikib chiqish uchun qabulxonaga oldindan xabar bering.</span>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-calendar-days"></i>
+                <div>
+                  <strong>48 soat oldin bepul bekor qilish</strong>
+                  <span>Kelish sanasidan ikki kun oldin bandlovni jarimasiz bekor qilish mumkin.</span>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-users"></i>
+                <div>
+                  <strong>Bolalar uchun chegirma</strong>
+                  <span>6 yoshgacha bo'lgan bolalar ota-onasi bilan mavjud o'rinlarda bepul joylashadi.</span>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-key"></i>
+                <div>
+                  <strong>To'lov mehmonxonada</strong>
+                  <span>Hisob-kitob kelganingizda qabulxonada amalga oshiriladi.</span>
+                </div>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true">
+      <span></span>
+      <i class="fa-solid fa-star"></i>
+      <span></span>
+    </div>
+
+    <section class="section reveal">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill-tag">05 / Jarayon</span>
+          <h2 class="section-title">Qanday <span class="grad-word">band</span> <span class="outline-text">qilinadi</span></h2>
+          <p class="section-desc">Atigi beshta oddiy qadam orqali o'zingizga mos xonani band qiling.</p>
+        </div>
+
+        <div class="zigzag-steps">
+          <div class="step-row step-left">
+            <div class="step-card">
+              <div class="step-num">01</div>
+              <div class="step-icon"><i class="fa-solid fa-calendar-days"></i></div>
+              <h3>Sana tanlandi</h3>
+              <p>Kelish va ketish kunlaringizni hamda mehmonlar sonini belgilaysiz.</p>
+            </div>
+          </div>
+
+          <div class="arc-connector arc-right" aria-hidden="true"></div>
+
+          <div class="step-row step-right">
+            <div class="step-card">
+              <div class="step-num">02</div>
+              <div class="step-icon"><i class="fa-solid fa-bed"></i></div>
+              <h3>Xona tanlandi</h3>
+              <p>O'zingizga ma'qul kelgan xona toifasi va qulayliklarini tanlaysiz.</p>
+            </div>
+          </div>
+
+          <div class="arc-connector arc-left" aria-hidden="true"></div>
+
+          <div class="step-row step-left">
+            <div class="step-card">
+              <div class="step-num">03</div>
+              <div class="step-icon"><i class="fa-solid fa-file-pen"></i></div>
+              <h3>Ma'lumot kiritildi</h3>
+              <p>Ismingiz va bog'lanish uchun telefon raqamingizni qoldirasiz.</p>
+            </div>
+          </div>
+
+          <div class="arc-connector arc-right" aria-hidden="true"></div>
+
+          <div class="step-row step-right">
+            <div class="step-card">
+              <div class="step-num">04</div>
+              <div class="step-icon"><i class="fa-solid fa-envelope-circle-check"></i></div>
+              <h3>Tasdiq xabari yuborildi</h3>
+              <p>Administratorimiz bandlov tafsilotlarini tekshirib tasdiq xabari yuboradi.</p>
+            </div>
+          </div>
+
+          <div class="arc-connector arc-left" aria-hidden="true"></div>
+
+          <div class="step-row step-left">
+            <div class="step-card">
+              <div class="step-num">05</div>
+              <div class="step-icon"><i class="fa-solid fa-key"></i></div>
+              <h3>Mehmonxonaga xush kelibsiz</h3>
+              <p>Belgilangan kunda kalitingizni olib shinam xonangizga joylashasiz.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true">
+      <span></span>
+      <i class="fa-solid fa-spa"></i>
+      <span></span>
+    </div>
+
+    <section class="section reveal">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill-tag">06 / Fikrlar</span>
+          <h2 class="section-title">Mehmonlar <span class="grad-word">iliq</span> <span class="outline-text">taassuroti</span></h2>
+          <p class="section-desc">Bizda mehmon bo'lgan sayohatchilar va oilalarning samimiy fikrlari.</p>
+        </div>
+      </div>
+
+      <div class="reviews-marquee">
+        <div class="reviews-track">
+          <article class="review-card">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p>Xonalar juda ozoda, yorug' va sokin. Ertalabki nonushta xilma-xil, xodimlar esa nihoyatda xushmuomala ekan.</p>
+            <div class="reviewer">
+              <span class="avatar-wrap">
+                <img class="avatar" src="imgs/odam01.jpg" alt="rasm" loading="lazy" />
+              </span>
+              <div>
+                <strong>Dilshod Karimov</strong>
+                <span>Toshkent · Feruza Nuri</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p>Oilamiz bilan ikki kun dam oldik. Yopiq basseyn va bolalar maydoni farzandlarimizga juda yoqdi.</p>
+            <div class="reviewer">
+              <span class="avatar-wrap">
+                <img class="avatar" src="imgs/odam02.jpg" alt="rasm" loading="lazy" />
+              </span>
+              <div>
+                <strong>Malika Usmonova</strong>
+                <span>Samarqand · Zaytun Hovli</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p>Xizmat safari bilan kelgandim, Wi-Fi tezligi va konferens zal sharoitlari a'lo darajada tashkil etilgan.</p>
+            <div class="reviewer">
+              <span class="avatar-wrap">
+                <img class="avatar" src="imgs/odam03.jpg" alt="rasm" loading="lazy" />
+              </span>
+              <div>
+                <strong>Javohir Tursunov</strong>
+                <span>Buxoro · Marjon Ufq</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p>Arka derazalar va shinam dizayn o'zgacha kayfiyat beradi. Keyingi safar ham albatta shu yerni tanlaymiz.</p>
+            <div class="reviewer">
+              <span class="avatar-wrap">
+                <img class="avatar" src="imgs/odam04.jpg" alt="rasm" loading="lazy" />
+              </span>
+              <div>
+                <strong>Nilufar Rahmonova</strong>
+                <span>Farg'ona · Oltin Qasr</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p>Xonalar juda ozoda, yorug' va sokin. Ertalabki nonushta xilma-xil, xodimlar esa nihoyatda xushmuomala ekan.</p>
+            <div class="reviewer">
+              <span class="avatar-wrap">
+                <img class="avatar" src="imgs/odam01.jpg" alt="rasm" loading="lazy" />
+              </span>
+              <div>
+                <strong>Dilshod Karimov</strong>
+                <span>Toshkent · Feruza Nuri</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p>Oilamiz bilan ikki kun dam oldik. Yopiq basseyn va bolalar maydoni farzandlarimizga juda yoqdi.</p>
+            <div class="reviewer">
+              <span class="avatar-wrap">
+                <img class="avatar" src="imgs/odam02.jpg" alt="rasm" loading="lazy" />
+              </span>
+              <div>
+                <strong>Malika Usmonova</strong>
+                <span>Samarqand · Zaytun Hovli</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p>Xizmat safari bilan kelgandim, Wi-Fi tezligi va konferens zal sharoitlari a'lo darajada tashkil etilgan.</p>
+            <div class="reviewer">
+              <span class="avatar-wrap">
+                <img class="avatar" src="imgs/odam03.jpg" alt="rasm" loading="lazy" />
+              </span>
+              <div>
+                <strong>Javohir Tursunov</strong>
+                <span>Buxoro · Marjon Ufq</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p>Arka derazalar va shinam dizayn o'zgacha kayfiyat beradi. Keyingi safar ham albatta shu yerni tanlaymiz.</p>
+            <div class="reviewer">
+              <span class="avatar-wrap">
+                <img class="avatar" src="imgs/odam04.jpg" alt="rasm" loading="lazy" />
+              </span>
+              <div>
+                <strong>Nilufar Rahmonova</strong>
+                <span>Farg'ona · Oltin Qasr</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p>Xonalar juda ozoda, yorug' va sokin. Ertalabki nonushta xilma-xil, xodimlar esa nihoyatda xushmuomala ekan.</p>
+            <div class="reviewer">
+              <span class="avatar-wrap">
+                <img class="avatar" src="imgs/odam01.jpg" alt="rasm" loading="lazy" />
+              </span>
+              <div>
+                <strong>Dilshod Karimov</strong>
+                <span>Toshkent · Feruza Nuri</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p>Oilamiz bilan ikki kun dam oldik. Yopiq basseyn va bolalar maydoni farzandlarimizga juda yoqdi.</p>
+            <div class="reviewer">
+              <span class="avatar-wrap">
+                <img class="avatar" src="imgs/odam02.jpg" alt="rasm" loading="lazy" />
+              </span>
+              <div>
+                <strong>Malika Usmonova</strong>
+                <span>Samarqand · Zaytun Hovli</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p>Xizmat safari bilan kelgandim, Wi-Fi tezligi va konferens zal sharoitlari a'lo darajada tashkil etilgan.</p>
+            <div class="reviewer">
+              <span class="avatar-wrap">
+                <img class="avatar" src="imgs/odam03.jpg" alt="rasm" loading="lazy" />
+              </span>
+              <div>
+                <strong>Javohir Tursunov</strong>
+                <span>Buxoro · Marjon Ufq</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p>Arka derazalar va shinam dizayn o'zgacha kayfiyat beradi. Keyingi safar ham albatta shu yerni tanlaymiz.</p>
+            <div class="reviewer">
+              <span class="avatar-wrap">
+                <img class="avatar" src="imgs/odam04.jpg" alt="rasm" loading="lazy" />
+              </span>
+              <div>
+                <strong>Nilufar Rahmonova</strong>
+                <span>Farg'ona · Oltin Qasr</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true">
+      <span></span>
+      <i class="fa-solid fa-star"></i>
+      <span></span>
+    </div>
+
+    <section id="contact" class="section contact-section reveal">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill-tag">07 / Aloqa va savollar</span>
+          <h2 class="section-title">Savollar va <span class="grad-word">aloqa</span> <span class="outline-text">markazi</span></h2>
+          <p class="section-desc">Ko'p beriladigan savollarga javoblar hamda qabulxona bilan bog'lanish ma'lumotlari.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Aloqa ma'lumotlari</h3>
+            <p>Har qanday savol yoki maxsus so'rovlar bo'yicha bizga murojaat qilishingiz mumkin.</p>
+            <ul class="contact-list">
+              <li>
+                <i class="fa-solid fa-phone"></i>
+                <div>
+                  <span>Telefon</span>
+                  <strong>+998 71 200 44 88</strong>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-envelope"></i>
+                <div>
+                  <span>Elektron pochta</span>
+                  <strong>info@nura-hotel.uz</strong>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-location-dot"></i>
+                <div>
+                  <span>Manzil</span>
+                  <strong>Toshkent shahri, Bog'ishamol ko'chasi, 18-uy</strong>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-clock"></i>
+                <div>
+                  <span>Ish vaqti</span>
+                  <strong>Har kuni, 24 soat uzluksiz</strong>
+                </div>
+              </li>
+            </ul>
+            <div class="social-row">
+              <a href="#contact" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#contact" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+              <a href="#contact" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+              <a href="#contact" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="faq-list">
+            <details name="faq" open>
+              <summary>
+                <span>Kelish va ketish vaqti nechada?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </summary>
+              <p>Mehmonxonaga joylashish soat 14:00 dan boshlanadi, xonani bo'shatish vaqti esa soat 12:00 gacha belgilangan.</p>
+            </details>
+
+            <details name="faq">
+              <summary>
+                <span>Bandlovni bekor qilish tartibi qanday?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </summary>
+              <p>Kelish sanasidan kamida 48 soat oldin xabar berilsa, bandlov hech qanday jarimasiz bekor qilinadi.</p>
+            </details>
+
+            <details name="faq">
+              <summary>
+                <span>Nonushta xona narxiga kiritilganmi?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </summary>
+              <p>Ha, barcha xona toifalarida ertalabki nonushta narx ichiga kiritilgan va har kuni soat 07:00 dan 10:30 gacha beriladi.</p>
+            </details>
+
+            <details name="faq">
+              <summary>
+                <span>Bolalar bilan turish shartlari qanday?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </summary>
+              <p>6 yoshgacha bo'lgan bolalar ota-onasi bilan mavjud o'rinlarda bepul turadi, 6 yoshdan 12 yoshgacha maxsus chegirma amal qiladi.</p>
+            </details>
+
+            <details name="faq">
+              <summary>
+                <span>To'lov qachon va qanday amalga oshiriladi?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </summary>
+              <p>Sayt orqali bandlov so'rovi yuboriladi, to'lov esa mehmonxonaga kelganingizda qabulxonada amalga oshiriladi.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="oyna-1" class="modal">
+    <div class="modal-card">
+      <a href="#rooms" class="modal-close" aria-label="Yopish"><i class="fa-solid fa-xmark"></i></a>
+      <div class="modal-grid">
+        <div class="arch-frame modal-arch">
+          <img src="imgs/xona01.jpg" alt="rasm" loading="lazy" />
+        </div>
+        <div class="modal-info">
+          <span class="room-type">Standart</span>
+          <h3>Tonggi Shabada</h3>
+          <div class="modal-price">450 000 so'm / kecha</div>
+          <p>Yorug' va ixcham xona yakka sayohatchilar yoki juftliklar uchun qulay muhit yaratadi.</p>
+          <div class="modal-specs">
+            <span><i class="fa-solid fa-ruler-combined"></i> 24 m²</span>
+            <span><i class="fa-solid fa-users"></i> 2 kishi</span>
+            <span><i class="fa-solid fa-bed"></i> Queen karavot</span>
+          </div>
+          <ul class="modal-amenities">
+            <li><i class="fa-solid fa-wifi"></i> Yuqori tezlikdagi Wi-Fi</li>
+            <li><i class="fa-solid fa-snowflake"></i> Iqlim nazorati va konditsioner</li>
+            <li><i class="fa-solid fa-tv"></i> Smart televizor</li>
+            <li><i class="fa-solid fa-martini-glass"></i> Mini-bar va choy to'plami</li>
+            <li><i class="fa-solid fa-vault"></i> Shaxsiy seyf</li>
+            <li><i class="fa-solid fa-bath"></i> Dush kabinali zamonaviy hammom</li>
+          </ul>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-primary" onclick="addRoom(this)" data-name="Tonggi Shabada">Band qilish</button>
+            <a href="#rooms" class="btn btn-secondary">Yopish</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="oyna-2" class="modal">
+    <div class="modal-card">
+      <a href="#rooms" class="modal-close" aria-label="Yopish"><i class="fa-solid fa-xmark"></i></a>
+      <div class="modal-grid">
+        <div class="arch-frame modal-arch">
+          <img src="imgs/xona02.jpg" alt="rasm" loading="lazy" />
+        </div>
+        <div class="modal-info">
+          <span class="room-type">Standart</span>
+          <h3>Sokin Bog'</h3>
+          <div class="modal-price">550 000 so'm / kecha</div>
+          <p>Ichki yashil bog'ga qaragan derazalar xonaga salqinlik va tabiiy osoyishtalik olib kiradi.</p>
+          <div class="modal-specs">
+            <span><i class="fa-solid fa-ruler-combined"></i> 28 m²</span>
+            <span><i class="fa-solid fa-users"></i> 2 kishi</span>
+            <span><i class="fa-solid fa-bed"></i> 2 ta alohida karavot</span>
+          </div>
+          <ul class="modal-amenities">
+            <li><i class="fa-solid fa-wifi"></i> Bepul Wi-Fi</li>
+            <li><i class="fa-solid fa-snowflake"></i> Konditsioner</li>
+            <li><i class="fa-solid fa-tv"></i> Smart televizor</li>
+            <li><i class="fa-solid fa-martini-glass"></i> Mini-bar</li>
+            <li><i class="fa-solid fa-vault"></i> Shaxsiy seyf</li>
+            <li><i class="fa-solid fa-mountain-sun"></i> Bog' manzarali deraza</li>
+          </ul>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-primary" onclick="addRoom(this)" data-name="Sokin Bog'">Band qilish</button>
+            <a href="#rooms" class="btn btn-secondary">Yopish</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="oyna-3" class="modal">
+    <div class="modal-card">
+      <a href="#rooms" class="modal-close" aria-label="Yopish"><i class="fa-solid fa-xmark"></i></a>
+      <div class="modal-grid">
+        <div class="arch-frame modal-arch">
+          <img src="imgs/xona03.jpg" alt="rasm" loading="lazy" />
+        </div>
+        <div class="modal-info">
+          <span class="room-type">Deluxe</span>
+          <h3>Feruza Nuri</h3>
+          <div class="modal-price">850 000 so'm / kecha</div>
+          <p>Keng ish burchagi va mayin matolar bilan bezatilgan Deluxe toifadagi shinam xona.</p>
+          <div class="modal-specs">
+            <span><i class="fa-solid fa-ruler-combined"></i> 36 m²</span>
+            <span><i class="fa-solid fa-users"></i> 2 kishi</span>
+            <span><i class="fa-solid fa-bed"></i> King karavot</span>
+          </div>
+          <ul class="modal-amenities">
+            <li><i class="fa-solid fa-wifi"></i> Yuqori tezlikdagi Wi-Fi</li>
+            <li><i class="fa-solid fa-snowflake"></i> Konditsioner</li>
+            <li><i class="fa-solid fa-tv"></i> 50 dyuymli televizor</li>
+            <li><i class="fa-solid fa-martini-glass"></i> To'ldirilgan mini-bar</li>
+            <li><i class="fa-solid fa-vault"></i> Elektron seyf</li>
+            <li><i class="fa-solid fa-bath"></i> Vanna va yumshoq xalatlar</li>
+          </ul>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-primary" onclick="addRoom(this)" data-name="Feruza Nuri">Band qilish</button>
+            <a href="#rooms" class="btn btn-secondary">Yopish</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="oyna-4" class="modal">
+    <div class="modal-card">
+      <a href="#rooms" class="modal-close" aria-label="Yopish"><i class="fa-solid fa-xmark"></i></a>
+      <div class="modal-grid">
+        <div class="arch-frame modal-arch">
+          <img src="imgs/xona04.jpg" alt="rasm" loading="lazy" />
+        </div>
+        <div class="modal-info">
+          <span class="room-type">Deluxe</span>
+          <h3>Marjon Ufq</h3>
+          <div class="modal-price">1 100 000 so'm / kecha</div>
+          <p>Shaxsiy balkoni va dam olish kreslolariga ega yorug' va kengaytirilgan Deluxe xona.</p>
+          <div class="modal-specs">
+            <span><i class="fa-solid fa-ruler-combined"></i> 42 m²</span>
+            <span><i class="fa-solid fa-users"></i> 3 kishi</span>
+            <span><i class="fa-solid fa-bed"></i> King karavot va divan</span>
+          </div>
+          <ul class="modal-amenities">
+            <li><i class="fa-solid fa-wifi"></i> Bepul Wi-Fi</li>
+            <li><i class="fa-solid fa-snowflake"></i> Konditsioner</li>
+            <li><i class="fa-solid fa-tv"></i> Smart televizor</li>
+            <li><i class="fa-solid fa-martini-glass"></i> Mini-bar va qahva mashinasi</li>
+            <li><i class="fa-solid fa-bath"></i> Keng vanna xonasi</li>
+            <li><i class="fa-solid fa-mountain-sun"></i> Shaxsiy balkon</li>
+          </ul>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-primary" onclick="addRoom(this)" data-name="Marjon Ufq">Band qilish</button>
+            <a href="#rooms" class="btn btn-secondary">Yopish</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="oyna-5" class="modal">
+    <div class="modal-card">
+      <a href="#rooms" class="modal-close" aria-label="Yopish"><i class="fa-solid fa-xmark"></i></a>
+      <div class="modal-grid">
+        <div class="arch-frame modal-arch">
+          <img src="imgs/xona05.jpg" alt="rasm" loading="lazy" />
+        </div>
+        <div class="modal-info">
+          <span class="room-type">Oilaviy</span>
+          <h3>Zaytun Hovli</h3>
+          <div class="modal-price">1 650 000 so'm / kecha</div>
+          <p>Ota-onalar va bolalar uchun alohida yotoq hududlariga ega ikki xonali oilaviy majmua.</p>
+          <div class="modal-specs">
+            <span><i class="fa-solid fa-ruler-combined"></i> 58 m²</span>
+            <span><i class="fa-solid fa-users"></i> 4 kishi</span>
+            <span><i class="fa-solid fa-bed"></i> 1 King va 2 alohida karavot</span>
+          </div>
+          <ul class="modal-amenities">
+            <li><i class="fa-solid fa-wifi"></i> Bepul Wi-Fi</li>
+            <li><i class="fa-solid fa-snowflake"></i> Har bir xonada konditsioner</li>
+            <li><i class="fa-solid fa-tv"></i> 2 ta Smart televizor</li>
+            <li><i class="fa-solid fa-martini-glass"></i> Mini-bar va ovqatlanish burchagi</li>
+            <li><i class="fa-solid fa-vault"></i> Katta seyf</li>
+            <li><i class="fa-solid fa-bath"></i> 2 ta alohida yuvinish xonasi</li>
+          </ul>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-primary" onclick="addRoom(this)" data-name="Zaytun Hovli">Band qilish</button>
+            <a href="#rooms" class="btn btn-secondary">Yopish</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="oyna-6" class="modal">
+    <div class="modal-card">
+      <a href="#rooms" class="modal-close" aria-label="Yopish"><i class="fa-solid fa-xmark"></i></a>
+      <div class="modal-grid">
+        <div class="arch-frame modal-arch">
+          <img src="imgs/xona06.jpg" alt="rasm" loading="lazy" />
+        </div>
+        <div class="modal-info">
+          <span class="room-type">Lyuks</span>
+          <h3>Oltin Qasr</h3>
+          <div class="modal-price">3 200 000 so'm / kecha</div>
+          <p>Panorama derazalar, mehmonxona zali va eng yuqori darajadagi qulayliklarga ega flagman lyuks.</p>
+          <div class="modal-specs">
+            <span><i class="fa-solid fa-ruler-combined"></i> 85 m²</span>
+            <span><i class="fa-solid fa-users"></i> 4 kishi</span>
+            <span><i class="fa-solid fa-bed"></i> Super King karavot</span>
+          </div>
+          <ul class="modal-amenities">
+            <li><i class="fa-solid fa-wifi"></i> Shaxsiy tezkor Wi-Fi</li>
+            <li><i class="fa-solid fa-snowflake"></i> Zonalangan iqlim nazorati</li>
+            <li><i class="fa-solid fa-tv"></i> 65 dyuymli Smart televizor</li>
+            <li><i class="fa-solid fa-martini-glass"></i> Premium mini-bar va qahva burchagi</li>
+            <li><i class="fa-solid fa-bath"></i> Jakuzi vanna va spa to'plami</li>
+            <li><i class="fa-solid fa-mountain-sun"></i> Panorama terassa</li>
+          </ul>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-primary" onclick="addRoom(this)" data-name="Oltin Qasr">Band qilish</button>
+            <a href="#rooms" class="btn btn-secondary">Yopish</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <aside id="cart" class="cart-drawer">
+    <div class="cart-head">
+      <h3>Tanlangan xonalar</h3>
+      <button type="button" class="icon-close" onclick="toggleMenu('cart')" aria-label="Yopish">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="cart-body">
+      <div class="cart-summary">
+        <span>Tanlangan xonalar:</span>
+        <strong id="roomTotal">0 ta</strong>
+      </div>
+      <p>Tanlagan xonalaringiz uchun so'rov yuboring, administrator siz bilan bog'lanadi.</p>
+      <button type="button" class="btn btn-primary btn-full" onclick="sendRequest()">So'rov yuborish</button>
+    </div>
+  </aside>
+  <div id="overlay" class="drawer-overlay" onclick="toggleMenu('cart')"></div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo footer-logo">
+            <i class="fa-solid fa-hotel"></i>
+            <span>Nura</span>
+          </a>
+          <p>Nura mehmonxonasida osoyishtalik, zamonaviy qulaylik va samimiy mehmondo'stlik mujassam.</p>
+          <div class="footer-socials">
+            <a href="#contact" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#contact" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+            <a href="#contact" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#contact" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigatsiya</h4>
+          <ul>
+            <li><a href="#rooms">Xonalar</a></li>
+            <li><a href="#facilities">Qulayliklar</a></li>
+            <li><a href="#prices">Narxlar</a></li>
+            <li><a href="#booking">Bron qilish</a></li>
+            <li><a href="#contact">Aloqa</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Yordam</h4>
+          <ul>
+            <li><a href="#booking">Bron shartlari</a></li>
+            <li><a href="#contact">Ko'p beriladigan savollar</a></li>
+            <li><a href="#facilities">Aeroport transferi</a></li>
+            <li><a href="#prices">Tariflar jadvali</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Aloqa</h4>
+          <ul class="footer-contact">
+            <li><i class="fa-solid fa-phone"></i><span>+998 71 200 44 88</span></li>
+            <li><i class="fa-solid fa-envelope"></i><span>info@nura-hotel.uz</span></li>
+            <li><i class="fa-solid fa-location-dot"></i><span>Toshkent shahri, Bog'ishamol ko'chasi, 18-uy</span></li>
+            <li><i class="fa-solid fa-clock"></i><span>24/7 qabulxona</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>Nura. Barcha huquqlar himoyalangan.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div id="notes"></div>
+  <script src="main.js"></script>
+</body>
+</html>
